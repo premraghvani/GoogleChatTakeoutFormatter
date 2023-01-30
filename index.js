@@ -82,6 +82,9 @@ function extractData(ent){
         for(var i = 0; i < ent.attached_files.length; i++){
             let q = ent.attached_files[i];
             atx.push(`<a href="${q.export_name}">${q.original_name}</a> (file saved as ${q.export_name})`)
+            if(q.original_name.endsWith(".png") || q.original_name.endsWith(".jpg") || q.original_name.endsWith(".jpeg")){
+                atx.push(`<img style="border: 2px solid black;" src="${q.export_name}" alt="${q.original_name}">`)
+            }
         }
         final.files = atx.join(", ");
     }
